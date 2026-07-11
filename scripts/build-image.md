@@ -1,40 +1,40 @@
-# SD-card image build procedure
+# Raspberry Pi SD-card image procedure
 
-Deze procedure bouwt geen ISO, maar een Raspberry Pi SD-card image. Dat is het juiste formaat voor een Raspberry Pi 3 Model A+.
+This procedure creates a Raspberry Pi SD-card image, not an ISO file.
 
-## Basisimage
+## Base operating system
 
-1. Download Raspberry Pi OS Lite 64-bit of 32-bit via Raspberry Pi Imager.
-2. Schrijf het image naar microSD.
-3. Zet SSH aan als beheer op afstand nodig is.
-4. Boot de Raspberry Pi en log in.
+1. Download Raspberry Pi OS Lite through Raspberry Pi Imager.
+2. Write it to a 16 GB or larger microSD card.
+3. Configure a hostname, user account, Wi-Fi, and SSH in Raspberry Pi Imager when required.
+4. Boot the Raspberry Pi and log in.
 
-## Packages
+## Install operating-system packages
 
 ```bash
 sudo apt update
 sudo apt install -y \
-  python3-venv python3-pip \
+  git python3-venv python3-pip \
   surf fbi xserver-xorg xinit openbox unclutter \
-  avahi-daemon bluetooth bluez rfkill \
-  git
+  avahi-daemon bluetooth bluez rfkill
 ```
 
-## Applicatie installeren
+## Install RaspDash
 
 ```bash
 sudo mkdir -p /opt/raspdash
 sudo chown -R "$USER:$USER" /opt/raspdash
-git clone <repo> /opt/raspdash
+git clone https://github.com/melvincoin/Raspdash.git /opt/raspdash
 cd /opt/raspdash
 python3 -m venv .venv
 . .venv/bin/activate
-pip install -r requirements.txt
+python -m pip install --upgrade pip
+python -m pip install -r requirements.txt
 sudo bash ./scripts/install-pi.sh
 sudo reboot
 ```
 
-## Bluetooth ELM327 koppelen
+## Optional Bluetooth ELM327 pairing
 
 ```bash
 sudo bluetoothctl
@@ -45,53 +45,44 @@ scan on
 pair XX:XX:XX:XX:XX:XX
 trust XX:XX:XX:XX:XX:XX
 quit
-sudo rfcomm bind rfcomm0 XX:XX:XX:XX:XX:XX 1
 ```
 
-Gebruik daarna `/dev/rfcomm0` als ELM327 poort in de beheerinterface.
+Set the paired MAC address and `/dev/rfcomm0` in the runtime configuration, then rerun `scripts/install-pi.sh` to install and enable the RFCOMM service.
 
-## Boot-optimalisatie
+## Boot-performance checks
 
-Controleer de traagste services:
+Inspect boot time and slow services:
 
 ```bash
 systemd-analyze
 systemd-analyze blame
 ```
 
-Schakel alleen services uit waarvan je zeker weet dat ze niet nodig zijn in de auto:
+Disable a service only after confirming that the dashboard, display, input devices, network discovery, and selected OBD adapter do not depend on it.
+
+## Verification
 
 ```bash
-sudo systemctl disable triggerhappy
-sudo systemctl disable hciuart
+systemctl status raspdash.service raspdash-kiosk.service raspdash-splash.service
+curl --fail http://127.0.0.1:5000/api/health
+free -m
+df -h /
 ```
 
-Laat `avahi-daemon` actief als `dashboard.local` nodig is.
+Also verify:
 
-## Image vastleggen
+- the splash and kiosk never display a white frame;
+- the HDMI mode and layout match the target display;
+- `vcgencmd get_throttled` reports `0x0`;
+- the selected provider reconnects after a reboot;
+- user uploads and runtime configuration survive a service restart.
 
-Als de Raspberry volledig is ingericht:
+## Capture the image
+
+Shut down cleanly:
 
 ```bash
 sudo shutdown now
 ```
 
-Maak op een andere machine een image van de SD-card met Raspberry Pi Imager, Win32DiskImager of `dd`.
-
-## Verificatie op doelhardware
-
-Meet na installatie:
-
-```bash
-systemd-analyze
-free -m
-top
-curl http://127.0.0.1:5000/api/health
-```
-
-Doelen:
-
-- Linux boot binnen 20 seconden
-- Dashboard zichtbaar binnen 25 seconden
-- Gemiddelde CPU onder 40%
-- RAM onder 500 MB
+After the Raspberry Pi has powered down, create a full SD-card image with Raspberry Pi Imager, Win32 Disk Imager, or `dd`. Store a SHA-256 checksum next to the backup and test restoration on a spare card when possible.
