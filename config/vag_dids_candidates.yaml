@@ -1,0 +1,138 @@
+target:
+  platform: MQB
+  transmission_family: DQ381_0GC
+  transmission_part: 0GC300046A
+  transmission_asam: EV_TCMDQ381061
+
+categories:
+  oil_temperature:
+    metric: engine_oil_temp
+    candidates:
+      # ScanGauge VW 2018 Tiguan engine oil / oil sump candidates.
+      - engine:30F9
+      - engine:38BB
+      # Known VW/MQB forum candidates; keep targeted, no range scan.
+      - engine:30DB
+      - engine:202F
+      - engine:F45C
+  dsg_temperature:
+    metric: dsg_temp
+    labels:
+      - IDE00024-ENG98981 ATF temperature-Transmission fluid temperature
+      - Transmission fluid temperature
+    candidates:
+      # DQ381/EV_TCMDQ381061 targeted candidates from IDE->DID hypothesis.
+      - transmission:0024
+      - transmission:0102
+      # Older generic ScanGauge-style candidates; locally seen as unsupported on this TCU.
+      - transmission:A008
+      - transmission:F45C
+  transmission_temperature:
+    metric: transmission_temp
+    labels:
+      - IDE00024-ENG98981 ATF temperature-Transmission fluid temperature
+      - Gearbox oil temperature
+      - Transmission fluid temperature
+    candidates:
+      - transmission:0024
+      - transmission:0102
+      - transmission:A008
+      - transmission:F45C
+  transmission_engine_rpm:
+    metric: transmission_engine_rpm
+    labels:
+      - IDE00021 Engine RPM
+    candidates:
+      - transmission:0021
+  transmission_input_speed:
+    metric: transmission_input_speed
+    labels:
+      - Transmission Input Speed
+      - IDE00022 Transmission input speed
+    candidates:
+      - transmission:0022
+      - transmission:A002
+  transmission_output_speed:
+    metric: transmission_output_speed
+    labels:
+      - Transmission Output Speed
+      - IDE00023 Transmission output speed
+    candidates:
+      - transmission:0023
+      - transmission:A022
+  transmission_vehicle_speed:
+    metric: transmission_vehicle_speed
+    labels:
+      - IDE00075 Vehicle speed
+    candidates:
+      - transmission:0075
+  selected_gear_proxy:
+    metric: selected_gear_proxy
+    labels:
+      - IDE02736 Display of gear in instrument panel
+      - Display Driving Gear
+    candidates:
+      - transmission:2736
+  clutch_state_proxy:
+    metric: clutch_state_proxy
+    labels:
+      - IDE02859 Status of basic setting data for clutch
+    candidates:
+      - transmission:2859
+  engine_torque_normalized:
+    metric: engine_torque_normalized
+    labels:
+      - IDE04010 Engine torque normalized
+    candidates:
+      - transmission:4010
+  nominal_torque:
+    metric: nominal_torque
+    labels:
+      - IDE04011 Nominal torque
+    candidates:
+      - transmission:4011
+  clutch_temperature:
+    metric: clutch_temp
+    labels:
+      - Clutch temperature
+      - Clutch: primary stat
+    candidates: []
+  mechatronic_temperature:
+    metric: mechatronic_temp
+    labels:
+      - Control Module temperature
+      - Mechatronic temperature
+    candidates: []
+  current_gear:
+    metric: current_gear
+    labels:
+      - Current Gear
+      - selected gear
+      - Driving position
+    candidates:
+      # ScanGauge 2014+ VW/Audi/Porsche automatic transmission current gear.
+      - transmission:A06A
+  torque_converter_clutch:
+    metric: torque_converter_clutch
+    labels:
+      - Torque Converter Lockup Clutch Status
+    candidates:
+      - transmission:94D4
+  engine_torque_tcu:
+    metric: engine_torque_tcu
+    labels:
+      - Engine Torque
+    candidates:
+      - transmission:948C
+  boost_actual:
+    metric: charge_pressure_actual
+    candidates: []
+  boost_requested:
+    metric: charge_pressure_requested
+    candidates: []
+  manifold_pressure:
+    metric: manifold_absolute_pressure
+    candidates: []
+  charge_pressure:
+    metric: charge_pressure_actual
+    candidates: []

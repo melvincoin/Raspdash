@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="nl">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>RaspDash</title>
+    <style>
+      html, body {
+        width: 100%;
+        height: 100%;
+        margin: 0;
+        overflow: hidden;
+        background: #030507;
+      }
+
+      #dashboard-canvas {
+        display: block;
+        width: 100vw;
+        height: 100vh;
+        opacity: 0;
+        background: #030507;
+      }
+
+      body.dashboard-ready #dashboard-canvas {
+        opacity: 1;
+      }
+
+      #boot-cover {
+        position: fixed;
+        inset: 0;
+        z-index: 9999;
+        background: #030507;
+      }
+
+      body.dashboard-ready #boot-cover {
+        display: none;
+      }
+    </style>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/dashboard.css') }}?v={{ asset_version }}">
+  </head>
+  <body
+    data-config='{{ config | tojson }}'
+    data-background="{{ config.display.background }}"
+    style="--accent: {{ config.dashboard.accent_color }}; --dimmed: {{ config.dashboard.dimmed_color }}; --brightness: {{ config.display.brightness }}; --bg-dim: {{ config.display.background_dim }};"
+  >
+    <div id="boot-cover" aria-hidden="true"></div>
+    <main class="dashboard-shell">
+      <canvas id="dashboard-canvas"></canvas>
+    </main>
+
+    <script src="{{ url_for('static', filename='js/renderers/retro.js') }}?v={{ asset_version }}"></script>
+    <script src="{{ url_for('static', filename='js/dashboard.js') }}?v={{ asset_version }}-act2"></script>
+  </body>
+</html>

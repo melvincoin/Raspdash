@@ -1,0 +1,19 @@
+<!doctype html>
+<html lang="nl">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>RaspDash splash</title>
+    <style>
+      html, body {
+        width: 100%;
+        height: 100%;
+        margin: 0;
+        background: #050607 url("{{ url_for('uploaded_file', asset_type='splash', filename=config.display.splash) }}") center / cover no-repeat;
+        overflow: hidden;
+      }
+    </style>
+  </head>
+  <body></body>
+</html>
+

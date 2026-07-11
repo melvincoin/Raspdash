@@ -1,0 +1,26 @@
+[Unit]
+Description=RaspDash browser kiosk
+After=raspdash.service systemd-user-sessions.service getty@tty1.service
+Wants=raspdash.service
+Conflicts=getty@tty1.service
+
+[Service]
+Type=simple
+User=__RASPDASH_USER__
+Group=__RASPDASH_GROUP__
+Environment=DISPLAY=:0
+Environment=XAUTHORITY=__RASPDASH_HOME__/.Xauthority
+PAMName=login
+TTYPath=/dev/tty1
+StandardInput=tty
+StandardOutput=journal
+StandardError=journal
+TTYReset=yes
+TTYVHangup=yes
+ExecStartPre=-/usr/bin/pkill -x fbi
+ExecStart=/usr/bin/startx /opt/raspdash/scripts/start-kiosk.sh -- :0 -nocursor
+Restart=always
+RestartSec=2
+
+[Install]
+WantedBy=multi-user.target

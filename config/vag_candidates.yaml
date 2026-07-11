@@ -1,0 +1,86 @@
+target:
+  platform: MQB
+  family: DQ381_0GC
+  asam: EV_TCMDQ381061
+  part: 0GC300046A
+
+excluded_dids:
+  - A008
+  - A06A
+  - A002
+  - A022
+  - 94D4
+  - 948C
+  - F45C
+
+candidates:
+  - metric: engine_rpm
+    module: transmission
+    header: 7E1
+    did: 0021
+    label: IDE00021 Engine RPM
+    reason: anchor for DQ381 IDE-to-DID hypothesis
+    status: unknown
+  - metric: transmission_input_speed
+    module: transmission
+    header: 7E1
+    did: 0022
+    label: IDE00022 Transmission input speed
+    reason: anchor for DQ381 IDE-to-DID hypothesis
+    status: unknown
+  - metric: transmission_output_speed
+    module: transmission
+    header: 7E1
+    did: 0023
+    label: IDE00023 Transmission output speed
+    reason: anchor for DQ381 IDE-to-DID hypothesis
+    status: unknown
+  - metric: transmission_fluid_temp
+    module: transmission
+    header: 7E1
+    did: 0024
+    label: IDE00024-ENG98981 ATF temperature-Transmission fluid temperature
+    reason: primary DQ381 ATF temperature target from research report
+    status: unknown
+  - metric: control_module_temp
+    module: transmission
+    header: 7E1
+    did: 0102
+    label: IDE00102 Control Module temperature
+    reason: secondary DQ381/mechatronic temperature probe from research report
+    status: unknown
+  - metric: vehicle_speed
+    module: transmission
+    header: 7E1
+    did: 0075
+    label: IDE00075 Vehicle speed
+    reason: context anchor for DQ381 IDE-to-DID hypothesis
+    status: unknown
+  - metric: selected_gear_proxy
+    module: transmission
+    header: 7E1
+    did: 2736
+    label: IDE02736 Display of gear in instrument panel
+    reason: gear display proxy from research report
+    status: unknown
+  - metric: clutch_state_proxy
+    module: transmission
+    header: 7E1
+    did: 2859
+    label: IDE02859 Status of basic setting data for clutch
+    reason: clutch related proxy from research report
+    status: unknown
+  - metric: engine_torque_normalized
+    module: transmission
+    header: 7E1
+    did: 4010
+    label: IDE04010 Engine torque normalized
+    reason: torque pair probe from research report
+    status: unknown
+  - metric: nominal_torque
+    module: transmission
+    header: 7E1
+    did: 4011
+    label: IDE04011 Nominal torque
+    reason: torque pair probe from research report
+    status: unknown

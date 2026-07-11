@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 900" role="img" aria-label="Oil level">
+  <g fill="none" stroke="#000" stroke-linejoin="miter" stroke-linecap="butt">
+    <path stroke-width="42" d="M82 300 110 205 252 257v71h216l40 43 294-82 32 34-39 47-28-29-72 18-180 202H214V430L82 384V300Z"/>
+    <path stroke-width="40" d="M94 303 221 349"/>
+    <path stroke-width="38" d="M323 260h132"/>
+    <path stroke-width="38" d="M389 260v70"/>
+    <path stroke-width="42" d="M500 405 690 353"/>
+    <path stroke-width="38" d="M706 348 560 516"/>
+    <path stroke-width="42" d="M214 430v131"/>
+    <path stroke-width="42" d="M214 561h301"/>
+  </g>
+  <path fill="#000" d="M810 406c-19 48-30 80-30 104 0 33 21 56 47 56s47-23 47-56c0-24-12-56-33-104-7-17-24-17-31 0Z"/>
+  <path fill="none" stroke="#000" stroke-width="42" stroke-linecap="butt" d="M116 681c51 42 103 42 154 0 51 42 103 42 154 0 51 42 103 42 154 0 51 42 103 42 154 0"/>
+  <path fill="none" stroke="#000" stroke-width="36" stroke-linecap="butt" d="M236 609c0 49-24 88-66 106m66-106c0 49 24 88 66 106m86-106c0 49-24 88-66 106m66-106c0 49 24 88 66 106m86-106c0 49-24 88-66 106m66-106c0 49 24 88 66 106m86-106c0 49-24 88-66 106m66-106c0 49 24 88 66 106"/>
+</svg>

@@ -1,0 +1,247 @@
+<!doctype html>
+<html lang="nl">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>RaspDash beheer</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/admin.css', v='20260704i') }}">
+  </head>
+  <body data-config='{{ config | tojson }}'>
+    <header class="topbar">
+      <div>
+        <h1>RaspDash</h1>
+        <p>Offline dashboard configuratie</p>
+      </div>
+      <nav>
+        <a href="/">Dashboard</a>
+        <button id="save-config">Opslaan</button>
+      </nav>
+    </header>
+
+    <nav class="section-nav" aria-label="Beheeronderdelen">
+      <a href="#editor">Indeling</a>
+      <a href="#display">Weergave</a>
+      <a href="#alerts">Meldingen</a>
+      <button id="toggle-advanced" type="button" aria-expanded="false">Geavanceerd tonen</button>
+    </nav>
+
+    <main class="admin-grid">
+      <section id="display" class="display-section">
+        <h2>Weergave</h2>
+        <label>Resolutie
+          <select id="resolution">
+            <option>1280x720</option>
+            <option>1920x1080</option>
+            <option>1024x600</option>
+            <option>800x480</option>
+          </select>
+        </label>
+        <label class="check"><input type="checkbox" id="fullscreen"> Fullscreen</label>
+        <label>Helderheid
+          <span class="range-with-value"><input type="range" id="brightness" min="0.35" max="1.2" step="0.05" data-value-format="x"><output id="brightness-value"></output></span>
+        </label>
+        <label>Achtergrond donkerder
+          <span class="range-with-value"><input type="range" id="background-dim" min="0.25" max="0.9" step="0.05" data-value-format="percent01"><output id="background-dim-value"></output></span>
+        </label>
+        <label>Render schaal
+          <span class="range-with-value"><input type="range" id="render-scale" min="0.45" max="1" step="0.05" data-value-format="percent01"><output id="render-scale-value"></output></span>
+        </label>
+        <label>Splash screen
+          <select id="splash">
+            {% for item in assets.splash %}<option>{{ item }}</option>{% endfor %}
+          </select>
+        </label>
+        <label>Achtergrond
+          <select id="background">
+            {% for item in assets.backgrounds %}<option>{{ item }}</option>{% endfor %}
+          </select>
+        </label>
+      </section>
+
+      <section class="advanced-section obd-section">
+        <h2>OBD</h2>
+        <label>Provider
+          <select id="provider">
+            <option value="simulated">Simulator</option>
+            <option value="hexv2">HEX-V2 USB</option>
+            <option value="elm327">ELM327 / vLinker USB</option>
+          </select>
+        </label>
+        <p class="hint" id="provider-hint"></p>
+        <label>ELM327 / vLinker poort
+          <input id="elm-port" placeholder="/dev/ttyUSB0">
+        </label>
+        <label>ELM327 Bluetooth MAC
+          <input id="elm-mac" placeholder="00:1D:A5:00:00:00">
+        </label>
+        <label class="check"><input type="checkbox" id="elm-allow-requests"> Live OBD uitlezen</label>
+        <div class="button-row">
+          <button id="detect-elm" type="button">Detecteer ELM327/vLinker</button>
+          <button id="detect-hex" type="button">Detecteer HEX-V2</button>
+        </div>
+        <pre id="hex-output">Nog niet gedetecteerd.</pre>
+      </section>
+
+      <section id="alerts" class="alerts-section">
+        <h2>Meldingen</h2>
+        <label>Accentkleur
+          <input id="accent-color" type="color">
+        </label>
+        <label class="check"><input type="checkbox" id="status-enabled"> Status tonen</label>
+        <label class="check"><input type="checkbox" id="oil-toast-enabled"> Oliepeil melding na start</label>
+        <label>Oliemelding positie
+          <select id="oil-toast-position">
+            <option value="top-center">Boven midden</option>
+            <option value="top-left">Boven links</option>
+            <option value="top-right">Boven rechts</option>
+            <option value="bottom-center">Onder midden</option>
+            <option value="bottom-left">Onder links</option>
+            <option value="bottom-right">Onder rechts</option>
+          </select>
+        </label>
+        <label>Duur oliemelding
+          <input id="oil-toast-duration" type="number" min="5" max="180" step="5">
+        </label>
+        <label>Oliemelding horizontaal
+          <span class="range-with-value"><input id="oil-toast-x" type="range" min="5" max="95" step="0.5" data-value-format="percent"><output id="oil-toast-x-value"></output></span>
+        </label>
+        <label>Oliemelding verticaal vanaf rand
+          <span class="range-with-value"><input id="oil-toast-y" type="range" min="1" max="30" step="0.5" data-value-format="percent"><output id="oil-toast-y-value"></output></span>
+        </label>
+        <label>Oliemelding breedte
+          <span class="range-with-value"><input id="oil-toast-width" type="range" min="18" max="70" step="1" data-value-format="percent"><output id="oil-toast-width-value"></output></span>
+        </label>
+        <label class="check"><input type="checkbox" id="dtc-toast-enabled"> OBD foutcode melding na start</label>
+        <label>Foutcode melding positie
+          <select id="dtc-toast-position">
+            <option value="top-center">Boven midden</option>
+            <option value="top-left">Boven links</option>
+            <option value="top-right">Boven rechts</option>
+            <option value="bottom-center">Onder midden</option>
+            <option value="bottom-left">Onder links</option>
+            <option value="bottom-right">Onder rechts</option>
+          </select>
+        </label>
+        <label>Duur foutcode melding
+          <input id="dtc-toast-duration" type="number" min="5" max="300" step="5">
+        </label>
+        <label>Foutcode melding horizontaal
+          <span class="range-with-value"><input id="dtc-toast-x" type="range" min="5" max="95" step="0.5" data-value-format="percent"><output id="dtc-toast-x-value"></output></span>
+        </label>
+        <label>Foutcode melding verticaal vanaf rand
+          <span class="range-with-value"><input id="dtc-toast-y" type="range" min="1" max="30" step="0.5" data-value-format="percent"><output id="dtc-toast-y-value"></output></span>
+        </label>
+        <label>Foutcode melding breedte
+          <span class="range-with-value"><input id="dtc-toast-width" type="range" min="20" max="85" step="1" data-value-format="percent"><output id="dtc-toast-width-value"></output></span>
+        </label>
+      </section>
+
+      <section class="advanced-section pi-section">
+        <h2>Raspberry Pi</h2>
+        <div class="status-grid" id="pi-status">
+          <div><span>Temp</span><strong id="pi-temp">-</strong></div>
+          <div><span>Voeding</span><strong id="pi-power">-</strong></div>
+          <div><span>Throttle</span><strong id="pi-throttle">-</strong></div>
+          <div><span>HDMI</span><strong id="pi-display">-</strong></div>
+          <div><span>Load</span><strong id="pi-load">-</strong></div>
+          <div><span>Uptime</span><strong id="pi-uptime">-</strong></div>
+        </div>
+        <button id="refresh-pi-status" type="button">Ververs Pi status</button>
+        <details class="technical-details">
+          <summary>Technische details</summary>
+          <pre id="pi-status-output">Nog niet geladen.</pre>
+        </details>
+      </section>
+
+      <section id="editor" class="editor-section">
+        <h2>Dashboardindeling</h2>
+        <div class="editor-workspace">
+          <div class="editor-stage">
+        <div class="editor-preview" id="layout-preview">
+        </div>
+        <div class="editor-actions">
+          <label>Nieuwe categorie
+            <select id="add-category"></select>
+          </label>
+          <label>Nieuw meetpunt
+            <select id="add-source"></select>
+          </label>
+          <button id="add-widget" type="button">Widget toevoegen</button>
+          <button id="remove-widget" type="button">Widget verwijderen</button>
+          <button id="duplicate-widget" type="button">Dupliceren</button>
+          <button id="snap-widget" type="button">Snap vrij</button>
+        </div>
+        <div class="editor-actions">
+          <button id="auto-grid" type="button">Auto grid</button>
+          <button id="auto-row" type="button">Auto rij</button>
+          <button id="auto-column" type="button">Auto kolom</button>
+          <button id="check-overlaps" type="button">Overlaps</button>
+          <button id="check-free-space" type="button">Vrije ruimte</button>
+        </div>
+        <label class="check"><input type="checkbox" id="editor-snap"> Snap to grid</label>
+        <label>Grid grootte
+          <span class="range-with-value"><input id="editor-grid-size" type="range" min="2.5" max="10" step="2.5" data-value-format="percent"><output id="editor-grid-size-value"></output></span>
+        </label>
+        <pre id="layout-output">Geen layoutactie uitgevoerd.</pre>
+          </div>
+          <aside class="widget-properties">
+            <h3>Geselecteerde widget</h3>
+        <label>Widget
+          <select id="edit-widget"></select>
+        </label>
+        <label>Parameter
+          <select id="edit-source"></select>
+        </label>
+        <label>Weergave
+          <select id="edit-style">
+            <option value="gauge">Golf 7 klok</option>
+            <option value="digital">Digitaal</option>
+          </select>
+        </label>
+        <label>Fontgrootte
+          <input id="edit-font-size" type="number" min="28" max="132">
+        </label>
+        <label>Breedte
+          <span class="range-with-value"><input id="edit-width" type="range" min="14" max="44" step="1" data-value-format="percent"><output id="edit-width-value"></output></span>
+        </label>
+        <label>Kleur
+          <input id="edit-color" type="color">
+        </label>
+        <div class="axis-grid">
+          <label>X
+            <input id="edit-x" type="number" min="0" max="86" step="0.5">
+          </label>
+          <label>Y
+            <input id="edit-y" type="number" min="0" max="86" step="0.5">
+          </label>
+        </div>
+        <div class="layout-preset-row">
+          <input id="layout-name" placeholder="Presetnaam">
+          <button id="save-layout" type="button">Preset opslaan</button>
+          <button id="apply-layout" type="button">Preset toepassen</button>
+          <button id="delete-layout" type="button">Preset verwijderen</button>
+        </div>
+          </aside>
+        </div>
+      </section>
+
+      <section class="advanced-section files-section">
+        <h2>Bestanden</h2>
+        <form action="/api/upload/splash" method="post" enctype="multipart/form-data">
+          <label>Splash uploaden
+            <input name="file" type="file" accept=".jpg,.jpeg,.png,.webp">
+          </label>
+          <button>Upload splash</button>
+        </form>
+        <form action="/api/upload/backgrounds" method="post" enctype="multipart/form-data">
+          <label>Achtergrond uploaden
+            <input name="file" type="file" accept=".jpg,.jpeg,.png,.webp">
+          </label>
+          <button>Upload achtergrond</button>
+        </form>
+      </section>
+    </main>
+
+    <script src="{{ url_for('static', filename='js/admin.js', v='20260704i') }}"></script>
+  </body>
+</html>

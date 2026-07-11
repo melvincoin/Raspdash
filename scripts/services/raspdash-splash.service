@@ -1,0 +1,18 @@
+[Unit]
+Description=RaspDash boot splash
+DefaultDependencies=no
+After=local-fs.target systemd-vconsole-setup.service
+Before=raspdash-kiosk.service
+
+[Service]
+Type=simple
+ExecStart=/opt/raspdash/scripts/start-splash.sh
+Restart=no
+StandardInput=tty
+StandardOutput=journal
+StandardError=journal
+TTYPath=/dev/tty1
+TTYReset=no
+
+[Install]
+WantedBy=multi-user.target

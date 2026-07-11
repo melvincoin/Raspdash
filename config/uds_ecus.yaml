@@ -1,0 +1,13 @@
+protocol: "6"
+default_baudrate: 115200
+ecus:
+  engine:
+    name: "Engine ECU"
+    request_header: "7E0"
+    response_header: "7E8"
+    enabled: true
+  transmission:
+    name: "Transmission ECU"
+    request_header: "7E1"
+    response_header: "7E9"
+    enabled: true

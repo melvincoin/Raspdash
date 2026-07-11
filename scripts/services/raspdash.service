@@ -1,0 +1,17 @@
+[Unit]
+Description=RaspDash Flask backend
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+WorkingDirectory=/opt/raspdash
+Environment=PYTHONUNBUFFERED=1
+ExecStart=/opt/raspdash/.venv/bin/python /opt/raspdash/run.py
+Restart=always
+RestartSec=2
+User=__RASPDASH_USER__
+Group=__RASPDASH_GROUP__
+
+[Install]
+WantedBy=multi-user.target

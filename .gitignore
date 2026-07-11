@@ -1,0 +1,16 @@
+.venv/
+.tmp-vw-fonts/
+__pycache__/
+*.pyc
+backups/
+data/
+reports/
+Boot splash.jpg
+*.img
+*.img.gz
+*.tar.gz
+raspdash/static/fonts/
+raspdash/static/uploads/backgrounds/*
+!raspdash/static/uploads/backgrounds/.gitkeep
+raspdash/static/uploads/splash/*
+!raspdash/static/uploads/splash/.gitkeep

@@ -1,0 +1,704 @@
+metadata:
+  engine_asam: EV_ECM15TFS01105E906018BC
+  engine_part: 05E906018BC
+  transmission_asam: EV_TCMDQ381061
+  transmission_part: 0GC300046A
+  service: "22"
+  source: OBDeleven live data export 2026-06-16
+candidates:
+  - module: engine
+    header: "7E0"
+    did: "11BD"
+    metric_key: engine_oil_temp
+    display_name: Engine oil temperature
+    priority: 1
+    unit_guess: deg C
+    status: unknown
+  - module: engine
+    header: "7E0"
+    did: "15B7"
+    metric_key: oil_pan_temp
+    display_name: Temperature in oil pan
+    priority: 1
+    unit_guess: deg C
+    status: unknown
+  - module: engine
+    header: "7E0"
+    did: "11F0"
+    metric_key: charge_pressure_actual
+    display_name: Charge air pressure actual value
+    priority: 1
+    unit_guess: kPa
+    status: unknown
+  - module: engine
+    header: "7E0"
+    did: "11F1"
+    metric_key: charge_pressure_specified
+    display_name: Charge air pressure specified value
+    priority: 1
+    unit_guess: kPa
+    status: unknown
+  - module: engine
+    header: "7E0"
+    did: "11DD"
+    metric_key: intake_manifold_pressure_target
+    display_name: Intake manifold pressure target value
+    priority: 1
+    unit_guess: kPa
+    status: unknown
+  - module: engine
+    header: "7E0"
+    did: "F40B"
+    metric_key: absolute_intake_pressure
+    display_name: Absolute intake pressure
+    priority: 1
+    unit_guess: kPa
+    status: unknown
+  - module: engine
+    header: "7E0"
+    did: "F433"
+    metric_key: ambient_air_pressure
+    display_name: Ambient air pressure
+    priority: 1
+    unit_guess: kPa
+    status: unknown
+  - module: engine
+    header: "7E0"
+    did: "F405"
+    metric_key: coolant_temp
+    display_name: Coolant temperature
+    priority: 1
+    unit_guess: deg C
+    status: unknown
+  - module: engine
+    header: "7E0"
+    did: "F40C"
+    metric_key: engine_rpm
+    display_name: Engine speed
+    priority: 1
+    unit_guess: rpm
+    status: unknown
+  - module: engine
+    header: "7E0"
+    did: "F40D"
+    metric_key: vehicle_speed
+    display_name: Vehicle speed
+    priority: 1
+    unit_guess: km/h
+    status: unknown
+  - module: engine
+    header: "7E0"
+    did: "F40F"
+    metric_key: intake_temp
+    display_name: Intake air temperature
+    priority: 1
+    unit_guess: deg C
+    status: unknown
+  - module: engine
+    header: "7E0"
+    did: "F442"
+    metric_key: terminal_30_voltage
+    display_name: Voltage terminal 30
+    priority: 1
+    unit_guess: V
+    status: unknown
+  - module: engine
+    header: "7E0"
+    did: "F449"
+    metric_key: accelerator_position
+    display_name: Accelerator position
+    priority: 1
+    unit_guess: "%"
+    status: unknown
+  - module: engine
+    header: "7E0"
+    did: "11BA"
+    metric_key: oil_fill_level
+    display_name: Oil fill level
+    priority: 2
+    unit_guess: raw
+    status: unknown
+  - module: engine
+    header: "7E0"
+    did: "1763"
+    metric_key: oil_level_status_bits
+    display_name: Bit string for status of oil level
+    priority: 2
+    unit_guess: raw
+    status: unknown
+  - module: engine
+    header: "7E0"
+    did: "1766"
+    metric_key: engine_oil_level_method_1
+    display_name: Engine oil level test method 1
+    priority: 2
+    unit_guess: raw
+    status: unknown
+  - module: engine
+    header: "7E0"
+    did: "1767"
+    metric_key: engine_oil_level_method_2
+    display_name: Engine oil level test method 2
+    priority: 2
+    unit_guess: raw
+    status: unknown
+  - module: engine
+    header: "7E0"
+    did: "1768"
+    metric_key: engine_oil_level_method_3
+    display_name: Engine oil level test method 3
+    priority: 2
+    unit_guess: raw
+    status: unknown
+  - module: engine
+    header: "7E0"
+    did: "177D"
+    metric_key: engine_oil_pressure_actual
+    display_name: Oil pressure actual value
+    priority: 2
+    unit_guess: bar
+    status: unknown
+  - module: engine
+    header: "7E0"
+    did: "181C"
+    metric_key: oil_pressure_sensor_raw
+    display_name: Oil pressure sensor raw value
+    priority: 2
+    unit_guess: raw
+    status: unknown
+  - module: engine
+    header: "7E0"
+    did: "181D"
+    metric_key: engine_oil_pressure_setpoint
+    display_name: Oil pressure setpoint
+    priority: 2
+    unit_guess: bar
+    status: unknown
+  - module: engine
+    header: "7E0"
+    did: "2287"
+    metric_key: oil_level_added_min_to_max
+    display_name: Oil level amount added MIN to MAX
+    priority: 2
+    unit_guess: raw
+    status: unknown
+  - module: engine
+    header: "7E0"
+    did: "22CA"
+    metric_key: oil_level_min_compensated
+    display_name: Oil level minimum value compensated
+    priority: 2
+    unit_guess: raw
+    status: unknown
+  - module: engine
+    header: "7E0"
+    did: "4EA9"
+    metric_key: engine_oil_level_factor_volume
+    display_name: Engine oil level factor volume
+    priority: 2
+    unit_guess: raw
+    status: unknown
+  - module: engine
+    header: "7E0"
+    did: "4F80"
+    metric_key: oil_level_max_relative
+    display_name: Oil level max value relative
+    priority: 2
+    unit_guess: "%"
+    status: unknown
+  - module: engine
+    header: "7E0"
+    did: "4F81"
+    metric_key: oil_level_min_relative
+    display_name: Oil level min value relative
+    priority: 2
+    unit_guess: "%"
+    status: unknown
+  - module: engine
+    header: "7E0"
+    did: "58D1"
+    metric_key: engine_oil_level_current
+    display_name: Engine oil level current value
+    priority: 2
+    unit_guess: raw
+    status: unknown
+  - module: engine
+    header: "7E0"
+    did: "58D2"
+    metric_key: engine_oil_level_history_1
+    display_name: Engine oil level history 1
+    priority: 2
+    unit_guess: raw
+    status: unknown
+  - module: engine
+    header: "7E0"
+    did: "58D3"
+    metric_key: engine_oil_level_history_2
+    display_name: Engine oil level history 2
+    priority: 2
+    unit_guess: raw
+    status: unknown
+  - module: engine
+    header: "7E0"
+    did: "58D4"
+    metric_key: engine_oil_level_history_3
+    display_name: Engine oil level history 3
+    priority: 2
+    unit_guess: raw
+    status: unknown
+  - module: engine
+    header: "7E0"
+    did: "58D5"
+    metric_key: engine_oil_level_history_4
+    display_name: Engine oil level history 4
+    priority: 2
+    unit_guess: raw
+    status: unknown
+  - module: engine
+    header: "7E0"
+    did: "58D6"
+    metric_key: engine_oil_level_history_5
+    display_name: Engine oil level history 5
+    priority: 2
+    unit_guess: raw
+    status: unknown
+  - module: engine
+    header: "7E0"
+    did: "58D7"
+    metric_key: engine_oil_level_history_6
+    display_name: Engine oil level history 6
+    priority: 2
+    unit_guess: raw
+    status: unknown
+  - module: engine
+    header: "7E0"
+    did: "58D8"
+    metric_key: engine_oil_level_history_7
+    display_name: Engine oil level history 7
+    priority: 2
+    unit_guess: raw
+    status: unknown
+  - module: engine
+    header: "7E0"
+    did: "58D9"
+    metric_key: engine_oil_level_history_8
+    display_name: Engine oil level history 8
+    priority: 2
+    unit_guess: raw
+    status: unknown
+  - module: engine
+    header: "7E0"
+    did: "58DA"
+    metric_key: engine_oil_level_history_9
+    display_name: Engine oil level history 9
+    priority: 2
+    unit_guess: raw
+    status: unknown
+  - module: engine
+    header: "7E0"
+    did: "159F"
+    metric_key: fuel_high_pressure_actual
+    display_name: Fuel high pressure actual value
+    priority: 3
+    unit_guess: bar
+    status: unknown
+  - module: engine
+    header: "7E0"
+    did: "11D7"
+    metric_key: fuel_high_pressure_specified
+    display_name: High fuel pressure specified value
+    priority: 3
+    unit_guess: bar
+    status: unknown
+  - module: engine
+    header: "7E0"
+    did: "11CE"
+    metric_key: fuel_low_pressure_specified
+    display_name: Low fuel pressure specified value
+    priority: 3
+    unit_guess: bar
+    status: unknown
+  - module: engine
+    header: "7E0"
+    did: "F462"
+    metric_key: engine_torque_normalized
+    display_name: Engine torque normalized
+    priority: 3
+    unit_guess: "%"
+    status: unknown
+  - module: engine
+    header: "7E0"
+    did: "F463"
+    metric_key: nominal_torque
+    display_name: Nominal torque
+    priority: 3
+    unit_guess: Nm
+    status: unknown
+  - module: engine
+    header: "7E0"
+    did: "14A1"
+    metric_key: powertrain_target_torque
+    display_name: Powertrain target torque
+    priority: 3
+    unit_guess: Nm
+    status: unknown
+  - module: engine
+    header: "7E0"
+    did: "F404"
+    metric_key: normed_load_value
+    display_name: Normed load value
+    priority: 3
+    unit_guess: "%"
+    status: unknown
+  - module: engine
+    header: "7E0"
+    did: "F443"
+    metric_key: absolute_load_value
+    display_name: Absolute load value
+    priority: 3
+    unit_guess: "%"
+    status: unknown
+  - module: engine
+    header: "7E0"
+    did: "F43C"
+    metric_key: exhaust_temp_b1s1
+    display_name: Exhaust temperature 1 bank 1
+    priority: 3
+    unit_guess: deg C
+    status: unknown
+  - module: engine
+    header: "7E0"
+    did: "2C32"
+    metric_key: exhaust_pressure_sensor_1_raw
+    display_name: Exhaust pressure sensor 1 raw value
+    priority: 3
+    unit_guess: raw
+    status: unknown
+  - module: engine
+    header: "7E0"
+    did: "188A"
+    metric_key: misfire_counter_cyl_1
+    display_name: Misfire counter cylinder 1
+    priority: 3
+    unit_guess: count
+    status: unknown
+  - module: engine
+    header: "7E0"
+    did: "188B"
+    metric_key: misfire_counter_cyl_3
+    display_name: Misfire counter cylinder 3
+    priority: 3
+    unit_guess: count
+    status: unknown
+  - module: engine
+    header: "7E0"
+    did: "188C"
+    metric_key: misfire_counter_cyl_4
+    display_name: Misfire counter cylinder 4
+    priority: 3
+    unit_guess: count
+    status: unknown
+  - module: engine
+    header: "7E0"
+    did: "188D"
+    metric_key: misfire_counter_cyl_2
+    display_name: Misfire counter cylinder 2
+    priority: 3
+    unit_guess: count
+    status: unknown
+  - module: engine
+    header: "7E0"
+    did: "1722"
+    metric_key: pre_ignition_counter_cyl_1
+    display_name: Pre-ignition counter cylinder 1
+    priority: 3
+    unit_guess: count
+    status: unknown
+  - module: engine
+    header: "7E0"
+    did: "1723"
+    metric_key: pre_ignition_counter_cyl_3
+    display_name: Pre-ignition counter cylinder 3
+    priority: 3
+    unit_guess: count
+    status: unknown
+  - module: engine
+    header: "7E0"
+    did: "1724"
+    metric_key: pre_ignition_counter_cyl_4
+    display_name: Pre-ignition counter cylinder 4
+    priority: 3
+    unit_guess: count
+    status: unknown
+  - module: engine
+    header: "7E0"
+    did: "1725"
+    metric_key: pre_ignition_counter_cyl_2
+    display_name: Pre-ignition counter cylinder 2
+    priority: 3
+    unit_guess: count
+    status: unknown
+  - module: transmission
+    header: "7E1"
+    did: "2104"
+    metric_key: transmission_fluid_temp
+    display_name: Transmission fluid temperature
+    priority: 1
+    unit_guess: deg C
+    status: unknown
+  - module: transmission
+    header: "7E1"
+    did: "38B2"
+    metric_key: clutch_temp
+    display_name: Clutch temperature air splash oil
+    priority: 1
+    unit_guess: deg C
+    status: unknown
+  - module: transmission
+    header: "7E1"
+    did: "028D"
+    metric_key: tcu_module_temp
+    display_name: Control module temperature
+    priority: 1
+    unit_guess: deg C
+    status: unknown
+  - module: transmission
+    header: "7E1"
+    did: "380A"
+    metric_key: transmission_input_speed
+    display_name: Transmission input speed
+    priority: 1
+    unit_guess: rpm
+    status: unknown
+  - module: transmission
+    header: "7E1"
+    did: "380B"
+    metric_key: transmission_output_speed
+    display_name: Transmission output speed
+    priority: 1
+    unit_guess: rpm
+    status: unknown
+  - module: transmission
+    header: "7E1"
+    did: "3808"
+    metric_key: selector_lever_position
+    display_name: Selector lever position
+    priority: 1
+    unit_guess: raw
+    status: unknown
+  - module: transmission
+    header: "7E1"
+    did: "3816"
+    metric_key: displayed_gear
+    display_name: Display of gear in instrument panel
+    priority: 1
+    unit_guess: raw
+    status: unknown
+  - module: transmission
+    header: "7E1"
+    did: "0285"
+    metric_key: tcu_terminal_15_voltage
+    display_name: Voltage terminal 15
+    priority: 1
+    unit_guess: V
+    status: unknown
+  - module: transmission
+    header: "7E1"
+    did: "0286"
+    metric_key: tcu_terminal_30_voltage
+    display_name: Voltage terminal 30
+    priority: 1
+    unit_guess: V
+    status: unknown
+  - module: transmission
+    header: "7E1"
+    did: "201D"
+    metric_key: transmission_oil_pressure_actual_201d
+    display_name: Oil pressure actual value
+    priority: 2
+    unit_guess: bar
+    status: unknown
+  - module: transmission
+    header: "7E1"
+    did: "381D"
+    metric_key: transmission_oil_pressure_actual
+    display_name: Oil pressure actual value
+    priority: 2
+    unit_guess: bar
+    status: unknown
+  - module: transmission
+    header: "7E1"
+    did: "381E"
+    metric_key: main_pressure_valve_current
+    display_name: Current of main pressure valve
+    priority: 2
+    unit_guess: A
+    status: unknown
+  - module: transmission
+    header: "7E1"
+    did: "382E"
+    metric_key: clutch_1_torque_specified
+    display_name: Specified torque clutch 1
+    priority: 2
+    unit_guess: Nm
+    status: unknown
+  - module: transmission
+    header: "7E1"
+    did: "382F"
+    metric_key: clutch_1_torque_actual
+    display_name: Actual torque clutch 1
+    priority: 2
+    unit_guess: Nm
+    status: unknown
+  - module: transmission
+    header: "7E1"
+    did: "3830"
+    metric_key: clutch_1_position_specified
+    display_name: Specified position clutch 1
+    priority: 2
+    unit_guess: mm
+    status: unknown
+  - module: transmission
+    header: "7E1"
+    did: "3831"
+    metric_key: clutch_1_position_actual
+    display_name: Actual position clutch 1
+    priority: 2
+    unit_guess: mm
+    status: unknown
+  - module: transmission
+    header: "7E1"
+    did: "3838"
+    metric_key: clutch_2_torque_specified
+    display_name: Specified torque clutch 2
+    priority: 2
+    unit_guess: Nm
+    status: unknown
+  - module: transmission
+    header: "7E1"
+    did: "3839"
+    metric_key: clutch_2_torque_actual
+    display_name: Actual torque clutch 2
+    priority: 2
+    unit_guess: Nm
+    status: unknown
+  - module: transmission
+    header: "7E1"
+    did: "383A"
+    metric_key: clutch_2_position_actual
+    display_name: Actual position clutch 2
+    priority: 2
+    unit_guess: mm
+    status: unknown
+  - module: transmission
+    header: "7E1"
+    did: "38EA"
+    metric_key: clutch_2_pressure_actual
+    display_name: Pressure of clutch 2 actual value
+    priority: 2
+    unit_guess: bar
+    status: unknown
+  - module: transmission
+    header: "7E1"
+    did: "38EB"
+    metric_key: clutch_1_pressure_actual
+    display_name: Pressure of clutch 1 actual value
+    priority: 2
+    unit_guess: bar
+    status: unknown
+  - module: transmission
+    header: "7E1"
+    did: "38EC"
+    metric_key: clutch_1_pressure_specified
+    display_name: Pressure of clutch 1 specified value
+    priority: 2
+    unit_guess: bar
+    status: unknown
+  - module: transmission
+    header: "7E1"
+    did: "38ED"
+    metric_key: clutch_2_pressure_specified
+    display_name: Pressure of clutch 2 specified value
+    priority: 2
+    unit_guess: bar
+    status: unknown
+  - module: transmission
+    header: "7E1"
+    did: "384D"
+    metric_key: clutch_basic_setting_status
+    display_name: Status of basic setting data for clutch
+    priority: 3
+    unit_guess: raw
+    status: unknown
+  - module: transmission
+    header: "7E1"
+    did: "3877"
+    metric_key: ge_clutch_data_status
+    display_name: GE clutch data status
+    priority: 3
+    unit_guess: raw
+    status: unknown
+  - module: transmission
+    header: "7E1"
+    did: "3841"
+    metric_key: transmission_mileage
+    display_name: Transmission mileage
+    priority: 3
+    unit_guess: km
+    status: unknown
+  - module: transmission
+    header: "7E1"
+    did: "3873"
+    metric_key: kilometers_at_last_basic_setting
+    display_name: Kilometers at last basic setting
+    priority: 3
+    unit_guess: km
+    status: unknown
+  - module: transmission
+    header: "7E1"
+    did: "388C"
+    metric_key: transmission_ignition_cycles
+    display_name: Number of ignition cycles
+    priority: 3
+    unit_guess: count
+    status: unknown
+  - module: transmission
+    header: "7E1"
+    did: "476D"
+    metric_key: transmission_oil_status
+    display_name: Transmission oil status
+    priority: 3
+    unit_guess: raw
+    status: unknown
+  - module: transmission
+    header: "7E1"
+    did: "3852"
+    metric_key: gear_positioner_a_actual
+    display_name: Actual position of gear positioner A feedback
+    priority: 3
+    unit_guess: mm
+    status: unknown
+  - module: transmission
+    header: "7E1"
+    did: "385A"
+    metric_key: gear_adjuster_b_actual
+    display_name: Actual position of gear adjuster B
+    priority: 3
+    unit_guess: mm
+    status: unknown
+  - module: transmission
+    header: "7E1"
+    did: "3862"
+    metric_key: gear_positioner_c_actual
+    display_name: Actual position of gear positioner C feedback
+    priority: 3
+    unit_guess: mm
+    status: unknown
+  - module: transmission
+    header: "7E1"
+    did: "386A"
+    metric_key: gear_positioner_d_actual
+    display_name: Actual position of gear positioner D
+    priority: 3
+    unit_guess: mm
+    status: unknown
