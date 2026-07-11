@@ -165,6 +165,29 @@ python -m pip check
 - Use a properly fused automotive power solution and shut down the Raspberry Pi cleanly before removing power.
 - Keep an SD-card image backup before changing kiosk, display, or boot settings.
 
+## Safety and liability disclaimer
+
+RaspDash is experimental hobby software supplied **as is** and **with all faults**. It is not certified, homologated, tested, or approved as an automotive component, instrument cluster, diagnostic device, warning system, driver-assistance system, or safety system.
+
+To the maximum extent permitted by applicable law:
+
+- the maintainers and contributors provide no warranty, representation, support commitment, or guarantee of any kind;
+- the maintainers and contributors disclaim liability for all direct, indirect, incidental, special, exemplary, consequential, property, financial, personal-injury, vehicle, data-loss, regulatory, or other damages arising from installation, configuration, use, misuse, malfunction, inaccurate data, delayed data, missing warnings, distraction, electrical faults, or inability to use the software;
+- all installation, wiring, vehicle compatibility, legal compliance, roadworthiness, cybersecurity, data protection, maintenance, and safe-use decisions remain solely the user's responsibility;
+- users assume all risks associated with connecting third-party hardware or software to a vehicle.
+
+Never rely on RaspDash for speed, warning lamps, tell-tales, collision warnings, following-distance warnings, steering-takeover requests, temperatures, pressures, fault reporting, or any other safety-relevant information. The original, approved vehicle instruments, audible warnings, controls, and safety systems must remain installed, functional, visible, and authoritative. Do not operate or configure the administration interface while driving.
+
+No disclaimer can exclude obligations or liability that cannot legally be excluded under applicable law. See the Apache License 2.0 for the governing warranty disclaimer and limitation of liability.
+
+## License
+
+Copyright 2026 melvincoin.
+
+Licensed under the [Apache License 2.0](LICENSE). See [NOTICE](NOTICE) for attribution and trademark information.
+
+RaspDash is an independent project and is not affiliated with, endorsed by, sponsored by, or approved by Volkswagen AG or any other vehicle manufacturer. All trademarks belong to their respective owners.
+
 ## Public repository policy
 
 The `.gitignore` intentionally excludes personal and runtime material, including:
